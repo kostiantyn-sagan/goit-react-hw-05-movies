@@ -1,0 +1,33 @@
+.link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid #cf4d6f;
+  padding: 4px 20px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.62;
+  letter-spacing: 0.06em;
+
+  color: #cf4d6f;
+  background-color: transparent;
+  border-radius: 6px;
+
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover,
+.link:focus {
+  color: #fff;
+  background-color: #cf4d6f;
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+  margin-right: 6px;
+}

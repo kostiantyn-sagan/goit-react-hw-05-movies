@@ -1,0 +1,89 @@
+.searchForm {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 1px solid #e03616; */
+
+  background-color: #c5afa4;
+  border-radius: 6px;
+  overflow: hidden;
+  /* box-shadow: 0px 2px 1px rgb(224 54 22 / 20%), 0px 1px 1px rgb(224 54 22 / 14%),
+    0px 1px 3px rgb(224 54 22 / 12%); */
+
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.searchForm:focus-within {
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15); */
+}
+
+.input {
+  border: none;
+  outline: none;
+
+  width: 100%;
+  display: inline-block;
+  padding-left: 6px;
+  padding-right: 6px;
+
+  font: inherit;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: #212121;
+  background-color: transparent;
+}
+
+.input::placeholder {
+  font: inherit;
+  font-size: 16px;
+  color: #212121;
+  opacity: 0.6;
+}
+
+.btn {
+  border: 0;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+
+  width: 50px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #212121;
+  background-color: transparent;
+  opacity: 0.6;
+
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.searchForm:focus-within .btn {
+  background-color: #c5afa4;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}

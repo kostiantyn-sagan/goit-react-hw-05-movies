@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #212121;
+  background-color: #fff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.app {
+  display: grid;
+  grid-gap: 18px;
+  grid-template-columns: 1fr;
+  padding-bottom: 8px;
+}
+
+.trendingTitle {
+  margin-top: 0;
+  margin-bottom: 16px;
+
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: 0.06em;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.castList {
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+  margin-bottom: -15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.castItem {
+  width: calc((100% - 60px) / 2);
+  margin: 15px;
+  border-radius: 0px 0px 6px 6px;
+
+  background-color: #c5afa4;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.actorContent {
+  padding: 10px 4px;
+  text-align: center;
+}
+
+.actorName {
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.19;
+  letter-spacing: 0.03em;
+}
+
+.actorCharacter {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-size: 14px;
+  line-height: 1.19;
+  letter-spacing: 0.03em;
+  opacity: 0.6;
+}
+
+.reviews {
+  padding: 0;
+  list-style: none;
+
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+.reviewsItem:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.reviewAuthor {
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.19;
+  letter-spacing: 0.03em;
+}
+
+.reviewContent {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+@media screen and (max-width: 767px) {
+  .trendingTitle {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .reviewContent {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .castItem {
+    width: calc((100% - 90px) / 3);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .trendingTitle {
+    font-size: 34px;
+  }
+
+  .castItem {
+    width: calc((100% - 120px) / 4);
+  }
+}
