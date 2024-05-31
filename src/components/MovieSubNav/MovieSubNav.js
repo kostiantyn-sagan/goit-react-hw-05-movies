@@ -1,14 +1,14 @@
 import { useRouteMatch, useLocation, NavLink } from 'react-router-dom';
-import { FaFilm, FaRegComments } from 'react-icons/fa';
-import s from './AdditionalInfo.module.css';
+import { FaUsers, FaRegComments } from 'react-icons/fa';
+import s from './MovieSubNav.module.css';
 
-export default function AdditionalInfo() {
+export default function MovieSubNav() {
   const { url } = useRouteMatch();
   const location = useLocation();
 
   return (
     <>
-      <h3 className={s.title}>Additional information</h3>
+      <h2 className={s.title}>Additional information</h2>
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink
@@ -18,7 +18,7 @@ export default function AdditionalInfo() {
               state: { from: location?.state?.from },
             }}
           >
-            <FaFilm className={s.icon} size="16px" />
+            <FaUsers className={s.icon} />
             Cast
           </NavLink>
         </li>
@@ -30,7 +30,7 @@ export default function AdditionalInfo() {
               state: { from: location?.state?.from },
             }}
           >
-            <FaRegComments className={s.icon} size="16px" />
+            <FaRegComments className={s.icon} />
             Reviews
           </NavLink>
         </li>

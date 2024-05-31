@@ -5,10 +5,4 @@ export default function Notification({ message }) {
   return <p className={s.text}>{message}</p>;
 }
 
-Notification.propTypes = {
-  //   reviews: PropTypes.shape({
-  //     results: PropTypes.arrayOf(
-  //       PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired,
-  //     ).isRequired,
-  //   }).isRequired,
-};
+Notification.propTypes = { message: PropTypes.string.isRequired };

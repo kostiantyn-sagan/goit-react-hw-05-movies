@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import s from './SearchForm.module.css';
 
 export default function SearchForm({ onSubmit, styles }) {
@@ -11,6 +12,7 @@ export default function SearchForm({ onSubmit, styles }) {
 
     if (query.trim() === '') {
       toast.warn('Search by empty string!');
+      setQuery('');
       return;
     }
 
@@ -24,6 +26,10 @@ export default function SearchForm({ onSubmit, styles }) {
       onSubmit={handleSubmit}
       style={{ ...styles }}
     >
+      <button className={s.btn} type="submit">
+        <FaSearch />
+        <span className={s.label}>Search</span>
+      </button>
       <input
         className={s.input}
         type="text"
@@ -32,10 +38,11 @@ export default function SearchForm({ onSubmit, styles }) {
         autoComplete="off"
         placeholder="Search movies"
       />
-      <button className={s.btn} type="submit">
-        <FaSearch />
-        <span className={s.label}>Search</span>
-      </button>
     </form>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  styles: PropTypes.object,
+};

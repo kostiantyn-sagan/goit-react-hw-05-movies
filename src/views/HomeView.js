@@ -13,9 +13,9 @@ const Status = {
 };
 
 export default function HomeView() {
+  const [status, setStatus] = useState(Status.IDLE);
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
     setStatus(Status.PENDING);
@@ -29,27 +29,29 @@ export default function HomeView() {
       .catch(error => {
         setError(error);
         setStatus(Status.REJECTED);
-        toast.error(error.message);
       });
   }, []);
 
-  // if (status === Status.REJECTED) {
-  //   toast('qweewqeqw');
-  //   return <p>{error.message}</p>;
-  // }
+  useEffect(() => {
+    if (status !== Status.REJECTED) {
+      return;
+    }
+
+    toast.error(error.message);
+  }, [error, status]);
 
   return (
     <section>
       <Container>
-        <h1 className="trendingTitle">Trending today</h1>
+        <h1 className="homeViewTitle">Trending today</h1>
 
         {status === Status.PENDING && (
           <Loader
-            className="loader"
             type="Audio"
             height={60}
             width={60}
-            color="#C5AFA4"
+            color="#DBC2CF"
+            className="loader"
           />
         )}
 

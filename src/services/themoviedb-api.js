@@ -26,15 +26,3 @@ export function fetchMovieById(movieId) {
     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=credits,reviews`,
   );
 }
-
-// export function fetchMovieCreditsById(movieId) {
-//   return fetchWithErrorHandling(
-//     `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`,
-//   );
-// }
-
-// export function fetchMovieReviewsById(movieId) {
-//   return fetchWithErrorHandling(
-//     `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}`,
-//   );
-// }

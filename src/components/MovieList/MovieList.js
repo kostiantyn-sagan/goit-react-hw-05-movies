@@ -20,8 +20,6 @@ export default function MovieList({ movies }) {
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }).isRequired,
-  ).isRequired,
+    PropTypes.shape({ id: PropTypes.number.isRequired }),
+  ),
 };

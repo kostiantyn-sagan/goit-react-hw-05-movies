@@ -15,28 +15,24 @@ const Status = {
 };
 
 export default function MoviesView() {
-  const history = useHistory();
   const location = useLocation();
+  const history = useHistory();
+  const searchQuery = new URLSearchParams(location.search).get('query');
 
+  const [status, setStatus] = useState(Status.IDLE);
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
-
-  const queryFromURLSearchParams = new URLSearchParams(location.search).get(
-    'query',
-  );
 
   useEffect(() => {
-    if (!queryFromURLSearchParams) {
+    if (!searchQuery) {
       setStatus(Status.IDLE);
       return;
     }
 
-    // setMovies(null);
     setStatus(Status.PENDING);
 
     theMovieDbAPI
-      .fetchMoviesByQuery(queryFromURLSearchParams)
+      .fetchMoviesByQuery(searchQuery)
       .then(({ results }) => {
         if (results.length === 0) {
           return Promise.reject(
@@ -50,9 +46,16 @@ export default function MoviesView() {
       .catch(error => {
         setError(error);
         setStatus(Status.REJECTED);
-        toast.error(error.message);
       });
-  }, [queryFromURLSearchParams]);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (status !== Status.REJECTED) {
+      return;
+    }
+
+    toast.error(error.message);
+  }, [error, status]);
 
   const changeURLSearchParams = query => {
     history.push({ ...location, search: `query=${query.toLowerCase()}` });
@@ -73,15 +76,13 @@ export default function MoviesView() {
 
         {status === Status.PENDING && (
           <Loader
-            className="loader"
             type="Audio"
             height={60}
             width={60}
-            color="#C5AFA4"
+            color="#DBC2CF"
+            className="loader"
           />
         )}
-
-        {/* {status === Status.REJECTED && <p>{error?.message}</p>} */}
 
         {status === Status.RESOLVED && <MovieList movies={movies} />}
       </Container>

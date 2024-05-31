@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #212121;
   background-color: #fff;
+  color: #212121;
 }
 
 code {
@@ -24,17 +24,15 @@ img {
   display: grid;
   grid-gap: 18px;
   grid-template-columns: 1fr;
-  padding-bottom: 8px;
+  padding-bottom: 24px;
 }
 
-.trendingTitle {
+.homeViewTitle {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.17;
-  letter-spacing: 0.06em;
 }
 
 .loader {
@@ -42,108 +40,27 @@ img {
   justify-content: center;
 }
 
-.castList {
-  padding: 0;
-  list-style: none;
-
+.notFoundView {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 0;
-  margin-bottom: -15px;
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-.castItem {
-  width: calc((100% - 60px) / 2);
-  margin: 15px;
-  border-radius: 0px 0px 6px 6px;
-
-  background-color: #c5afa4;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.actorContent {
-  padding: 10px 4px;
-  text-align: center;
-}
-
-.actorName {
-  margin-top: 0;
-  margin-bottom: 8px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.19;
-  letter-spacing: 0.03em;
-}
-
-.actorCharacter {
-  margin-top: 0;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
   margin-bottom: 0;
+  font-weight: 400;
+}
 
-  font-size: 14px;
-  line-height: 1.19;
-  letter-spacing: 0.03em;
+.notFoundViewStatus {
+  margin-bottom: 16px;
+  font-size: 64px;
+}
+
+.notFoundViewMessage {
+  font-size: 16px;
   opacity: 0.6;
 }
 
-.reviews {
-  padding: 0;
-  list-style: none;
-
-  margin-top: 18px;
-  margin-bottom: 0;
-}
-
-.reviewsItem:not(:last-child) {
-  margin-bottom: 15px;
-}
-
-.reviewAuthor {
-  margin-top: 0;
-  margin-bottom: 8px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.19;
-  letter-spacing: 0.03em;
-}
-
-.reviewContent {
-  margin-top: 0;
-  margin-bottom: 0;
-
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: 0.03em;
-}
-
 @media screen and (max-width: 767px) {
-  .trendingTitle {
+  .homeViewTitle {
     text-align: center;
-  }
-}
-
-@media screen and (min-width: 480px) {
-  .reviewContent {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .castItem {
-    width: calc((100% - 90px) / 3);
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .trendingTitle {
-    font-size: 34px;
-  }
-
-  .castItem {
-    width: calc((100% - 120px) / 4);
   }
 }

@@ -1,8 +1,8 @@
 import { useLocation, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as theMovieDbAPI from '../../services/themoviedb-api';
-import defaultImage from './default-normal.jpg';
 import s from './MovieListItem.module.css';
+import defaultImage from './default-normal.jpg';
 
 export default function MovieListItem({
   id,
@@ -42,9 +42,8 @@ export default function MovieListItem({
 }
 
 MovieListItem.propTypes = {
-  // movies: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     id: PropTypes.number.isRequired,
-  //   }).isRequired,
-  // ).isRequired,
+  id: PropTypes.number.isRequired,
+  backdropPath: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
 };

@@ -2,8 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import AppBar from './components/AppBar';
+import Container from './components/Container';
 import FallbackLoader from './components/FallbackLoader';
-import NotFoundView from './views/NotFoundView';
 
 const HomeView = lazy(() =>
   import('./views/HomeView.js' /* webpackChunkName: "home-view" */),
@@ -16,13 +16,22 @@ const MovieDetailsView = lazy(() =>
     './views/MovieDetailsView.js' /* webpackChunkName: "movie-details-view" */
   ),
 );
+const NotFoundView = lazy(() =>
+  import('./views/NotFoundView.js' /* webpackChunkName: "not-found-view" */),
+);
 
 export default function App() {
   return (
     <div className="app">
       <AppBar />
 
-      <Suspense fallback={<FallbackLoader responsive />}>
+      <Suspense
+        fallback={
+          <Container>
+            <FallbackLoader />
+          </Container>
+        }
+      >
         <Switch>
           <Route path="/" exact>
             <HomeView />

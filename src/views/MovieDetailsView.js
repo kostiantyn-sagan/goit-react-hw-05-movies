@@ -5,13 +5,14 @@ import Loader from 'react-loader-spinner';
 import * as theMovieDbAPI from '../services/themoviedb-api';
 import Container from '../components/Container';
 import GoBackButton from '../components/GoBackButton';
-import Description from '../components/Description';
-import AdditionalInfo from '../components/AdditionalInfo';
+import MovieCard from '../components/MovieCard';
 import FallbackLoader from '../components/FallbackLoader';
 
-const Cast = lazy(() => import('./Cast.js' /* webpackChunkName: "cast" */));
+const Cast = lazy(() =>
+  import('../components/Cast' /* webpackChunkName: "cast" */),
+);
 const Reviews = lazy(() =>
-  import('./Reviews.js' /* webpackChunkName: "reviews" */),
+  import('../components/Reviews' /* webpackChunkName: "reviews" */),
 );
 
 const Status = {
@@ -25,9 +26,9 @@ export default function MovieDetailsView() {
   const { movieId } = useParams();
   const { path } = useRouteMatch();
 
+  const [status, setStatus] = useState(Status.IDLE);
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
     setStatus(Status.PENDING);
@@ -41,37 +42,35 @@ export default function MovieDetailsView() {
       .catch(error => {
         setError(error);
         setStatus(Status.REJECTED);
-        toast.error(error.message);
       });
   }, [movieId]);
 
-  // const onGoBack = () => {
-  //   history.push(location?.state?.from ?? '/');
-  // };
+  useEffect(() => {
+    if (status !== Status.REJECTED) {
+      return;
+    }
+
+    toast.error(error.message);
+  }, [error, status]);
 
   return (
     <section>
       <Container>
-        {/* <button type="button" onClick={onGoBack}>
-        Назад
-      </button> */}
         <GoBackButton />
 
         {status === Status.PENDING && (
           <Loader
-            className="loader"
             type="Audio"
             height={60}
             width={60}
-            color="#C5AFA4"
+            color="#DBC2CF"
+            className="loader"
           />
         )}
 
-        {/* {status === Status.REJECTED && <p>{error.message}</p>} */}
-
         {status === Status.RESOLVED && (
           <article>
-            <Description
+            <MovieCard
               posterPath={movie.poster_path}
               title={movie.title}
               releaseDate={movie.release_date}
@@ -79,7 +78,6 @@ export default function MovieDetailsView() {
               overview={movie.overview}
               genres={movie.genres}
             />
-            <AdditionalInfo />
 
             <Suspense fallback={<FallbackLoader />}>
               <Switch>
